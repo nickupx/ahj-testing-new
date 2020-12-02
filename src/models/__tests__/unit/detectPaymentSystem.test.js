@@ -1,4 +1,4 @@
-import detectPaymentSystem from '../detectPaymentSystem'
+import detectPaymentSystem from '../../detectPaymentSystem'
 
 test('should be visa', () => {
   const result = detectPaymentSystem('4111111111111111')

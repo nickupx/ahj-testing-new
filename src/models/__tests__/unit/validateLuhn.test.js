@@ -1,4 +1,4 @@
-import validateLuhn from '../validateLuhn'
+import validateLuhn from '../../validateLuhn'
 
 test('should be validated', () => {
   const result = validateLuhn('4111111111111111')

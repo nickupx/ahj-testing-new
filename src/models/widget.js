@@ -11,34 +11,23 @@ import diners from '../assets/images/diners.png'
 import discover from '../assets/images/discover.png'
 import mir from '../assets/images/mir.png'
 
-const logos = [
-  visa, mc, amex, jcb, diners, discover, mir
-]
+const logos = {visa, mc, amex, jcb, diners, discover, mir}
+
 
 export default class CardWidget {
   constructor() {
+    this.widgetContainer = document.getElementById('widget')
     this.paymentSystems = data
     this.logosContainer = document.getElementById('logos')
     let html = ''
-    for (const logo of logos) {
-      html += `<img src="${logo}" data-logo="${logo.id}" id="logo-${logo.id}" class="logo-img" alt="${logo.name}">`
+    for (const logo in logos) {
+      html += `<img src="${logos[logo]}" data-logo="${logo}" id="logo-${logo}" class="logo-img" alt="${logo}">`
     }
     this.logosContainer.innerHTML = html
     this.form = document.getElementById('form')
     this.input = document.getElementById('form-input')
     this.submit = document.getElementById('form-submit')
-    this.error = document.getElementById('error-message')
   }
-
-  // async init() {
-  //   let html = ''
-  //   for (const logo of this.paymentSystems) {
-  //     const url = import(`../assets/images/${logo.id}.png`)
-  //     const response = await url
-  //     html += `<img src="${response.default}" data-logo="${logo.id}" id="logo-${logo.id}" class="logo-img" alt="${logo.name}">`
-  //   }
-  //   this.logosContainer.innerHTML = html
-  // }
 
   validate() {
     // понимаю, что достаточно трудночитаемая фигня, но наводить красоту пока лень
@@ -55,12 +44,18 @@ export default class CardWidget {
   }
 
   clearError() {
-    this.error.textContent = ''
+    const error = document.getElementById('error-message')
+    if (error) {
+      error.remove()
+    }
   }
 
   showError(text) {
     this.switchOffLogo()
-    this.error.textContent = text
+    const errorMsg = document.createElement('div')
+    errorMsg.id = 'error-message'
+    errorMsg.textContent = text
+    this.widgetContainer.appendChild(errorMsg)
   }
 
   highlightLogo(system) {
