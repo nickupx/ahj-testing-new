@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
@@ -19,7 +20,7 @@ const optimization = () => {
 
   if (isProd) {
     config.minimizer = [
-      new OptimizeCssAssetWebpackPlugin(),
+      new OptimizeCssAssetsWebpackPlugin(),
       new TerserWebpackPlugin()
     ]
   }
@@ -85,14 +86,11 @@ const plugins = () => {
       }
     }),
     new CleanWebpackPlugin(),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'src/favicon.ico'),
-    //       to: path.resolve(__dirname, 'dist')
-    //     }
-    //   ]
-    // }),
+    new CopyWebpackPlugin([
+      { from: path.resolve(__dirname, 'src/favicon.ico'), to: path.resolve(__dirname, 'dist') },
+      { from: path.resolve(__dirname, 'src/LICENSE.txt'), to: path.resolve(__dirname, 'dist') }
+      ]
+    ),
     new MiniCssExtractPlugin({
       filename: filename('css')
     })
@@ -121,8 +119,8 @@ module.exports = {
   },
   optimization: optimization(),
   devServer: {
-    port: 4200,
-    hot: isDev
+    port: 8080,
+    // hot: isDev
   },
   devtool: isDev ? 'source-map' : '',
   plugins: plugins(),
