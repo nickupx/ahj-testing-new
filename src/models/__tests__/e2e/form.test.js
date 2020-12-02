@@ -22,8 +22,6 @@ describe('Card validation form', () => {
 
   test('should add .logo-active class for visa', async() => {
     await page.goto(baseUrl)
-    const widgetContainer = await page.$('#widget')
-    const logosContainer = await page.$('#logos')
     const form = await page.$('#form')
     const input = await form.$('#form-input')
     await input.type('4111111111111111')
@@ -34,8 +32,6 @@ describe('Card validation form', () => {
 
   test('should display error', async() => {
     await page.goto(baseUrl)
-    const widgetContainer = await page.$('#widget')
-    // const logosContainer = await page.$('#logos')
     const form = await page.$('#form')
     const input = await form.$('#form-input')
     await input.type('4111111111111113')
