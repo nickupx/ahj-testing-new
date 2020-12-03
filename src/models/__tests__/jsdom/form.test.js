@@ -1,3 +1,12 @@
+const result = 1
+
+describe('test example', () => {  
+
+  test('Should be 1', () => {
+    expect(result).toBe(1)
+    })
+  })
+
 /* import CardWidget from '../../widget'
 
 const widget = new CardWidget()
