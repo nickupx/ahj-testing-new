@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "test": "jest",
     "coverage": "jest --coverage",
-    "e2e":"jest --testPathPattern=./e2e/ --runInBand",
+    "e2e": "jest --testPathPattern=./e2e/ --runInBand",
     "jsdom": "jest --testPathPattern=./jsdom/"
   },
   "browserslist": "> 0.25%, not dead",
@@ -56,10 +56,7 @@
     "normalize.css": "^8.0.1"
   },
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nickupx/ahj-testing-new.git"
-  },
+  "repository": "git+https://github.com/nickupx/ahj-testing-new.git",
   "bugs": {
     "url": "https://github.com/nickupx/ahj-testing-new/issues"
   },

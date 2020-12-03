@@ -1,4 +1,4 @@
-import CardWidget from '../../widget'
+/* import CardWidget from '../../widget'
 
 const widget = new CardWidget()
 const input = widget.input
@@ -11,4 +11,4 @@ test('Should display error', () => {
   submit.click()
   expect(document.querySelector('#error-message').textContent).toBe('Your number is not a card number')
   })
-})
+}) */
